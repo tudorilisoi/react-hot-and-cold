@@ -1,0 +1,22 @@
+nav, h1 {
+    text-align: center;
+}
+
+nav ul {
+    position: relative;
+    height: 10%;
+    padding: 1em;
+    display: inline-flex;
+}
+
+nav ul li {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.2em;
+    list-style-type: none;
+    margin: 20px;
+}
+
+a {
+    color: white;
+}

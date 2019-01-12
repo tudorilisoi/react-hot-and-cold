@@ -1,11 +1,7 @@
 import React from 'react';
 
 import Header from './header'
-import GuessFeedback from './guess-feedback';
-import GuessInput from './guess-input';
-import GuessButton from './guess-button';
-import GuessCount from './guess-count';
-import GuessTrack from './guess-track';
+import GuessForm from './guess-form';
 
 export default class GuessBoard extends React.Component {
     constructor(props) {
@@ -16,7 +12,7 @@ export default class GuessBoard extends React.Component {
             currentGuess: null,
             history: [],
             status: 'Make your guess!',
-            count: null,
+            count: 1,
         }
     }
 
@@ -53,7 +49,9 @@ export default class GuessBoard extends React.Component {
         this.setState({history: [...this.state.history, ' ' + guess]})
     }
 
-    handleButtonClick(guess) {
+    handleButtonClick(event, guess) {
+        event.preventDefault();
+
         if (isNaN(guess)) {
             this.setState({ status: 'Please enter a valid number' });
             return;
@@ -71,19 +69,22 @@ export default class GuessBoard extends React.Component {
             currentGuess: null,
             history: [],
             status: 'Make your guess!',
-            count: null,
+            count: 1,
         });
     }
 
     render() {
         return (
-            <div>
+            <div className="guess-board">
                 <Header onNewGame={() => this.restartGame()}/>
-                <GuessFeedback status={this.state.status} />
-                <GuessInput textInput={this.state.textInput} onChange={(text) => this.setTextInput(text)} />
-                <GuessButton onClick={() => this.handleButtonClick(this.state.textInput)}/>
-                <GuessCount count={this.state.count} />
-                <GuessTrack history={this.state.history}/>
+                <GuessForm 
+                status={this.state.status}
+                textInput={this.state.textInput}
+                onChange={(text) => this.setTextInput(text)}
+                onClick={(event) => this.handleButtonClick(event, this.state.textInput)}
+                count={this.state.count}
+                history={this.state.history}
+                />
             </div>
         );
     }

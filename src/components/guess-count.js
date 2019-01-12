@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function GuessCount(props) {
     return (
-        <div>
-            Guess: {props.count}
+        <div className="form-item">
+            This is guess #: {props.count}
         </div>
     );
 }
