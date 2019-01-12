@@ -12,9 +12,9 @@ export default function GuessForm(props) {
     return (
         <div className="guess-form">
             <GuestFeedback status={props.status}/>
-            <form>
+            <form onSubmit={props.onSubmit}>
                 <GuessInput textInput={props.textInput} onChange={props.onChange}/>
-                <GuessButton onClick={props.onClick}/>
+                <GuessButton />
             </form>
             <GuessCount count={props.count}/>
             <GuessTrack history={props.history}/>

@@ -81,7 +81,7 @@ export default class GuessBoard extends React.Component {
                 status={this.state.status}
                 textInput={this.state.textInput}
                 onChange={(text) => this.setTextInput(text)}
-                onClick={(event) => this.handleButtonClick(event, this.state.textInput)}
+                onSubmit={(event) => this.handleButtonClick(event, this.state.textInput)}
                 count={this.state.count}
                 history={this.state.history}
                 />
